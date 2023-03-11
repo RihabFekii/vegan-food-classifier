@@ -31,3 +31,12 @@ Upload your data via the **upload** interface. Adding **tags** to your data is h
 
 ![upload_data](/docs/uploaded-data.png)
 
+## Annotate data 
+
+The next step after uploading data on vegan and omnivore food is annotation. 
+
+Roboflow has a built-in **annotation tool** that I will use to annotate my data for my object detection task. 
+
+The picture below shows the annotation tool interface. I can easily draw the **bounding box** around the plate and assign the **labels** "vegan" or "omnivore" to my plate(s) in my images. 
+
+![annotate](/docs/annotate.png)
