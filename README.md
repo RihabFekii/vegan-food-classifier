@@ -47,7 +47,7 @@ Once you annotate the data, the next step is to create a dataset to train the ML
 
 You have the option to split the data within your dataset in different ways. In my case, I chose to split the data to train(87%), test(5%), and validation(8%) sets. 
 
-## data pre-processing 
+## Data pre-processing 
 
 Roboflow enables you to easily make pre-processing e.g data resize, orientation, color conversion, etc. via the **Generate** interface, as shown below: 
 
@@ -66,3 +66,64 @@ I applied 90° rotation, Exposure (25%), and mosaic on my dataset.
 Finally, this is what the configuration of the newly generated version of my dataset looks like: 
 
 ![dataset-generate](/docs/dataset-config.png)
+
+# Training 
+
+Now that the data annotation and dataset creation and processing are completed. The next step is to train an object detection model on your dataset. Roboflow makes this process simple and possible in one click.
+
+You can choose via the Roboflow **Versions** interface, to export your dataset to the format that fulfills your computer vision task and it will assign the fitting model(s) accordingly. 
+
+When the training is complete, you get **notified via email**. 
+
+## Training metrics
+The great advantage is to have a real-time dashboard of the training progress. 
+Since I have an object detection task, the mAP (mean average precision) is a fitting metric to track the model-trained performance. 
+
+![training-dashboard](/docs/training.gif)
+
+After the training is completed, you also can have an overview of the **training metrics** e.g validation set, test set, and training graphs, as shown below: 
+
+![training-metrics](/docs/train-metrics.png)
+
+You can also visualize the prediction of your model and the ground truth to have a better overview of how truly your model performs the task of object detection of the vegan and omnivore plates, as shown below: 
+
+![visualize-predictions](/docs/predictions.gif)
+
+
+## Dataset health check 
+
+The best way to assess model performance besides checking the training metrics is to check the dataset class distribution, balance, annotation quality, etc. 
+
+Thanks to the health check feature on Roboflow, this process is made straightforward, as shown below: 
+
+![health-check](/docs/health-check.gif)
+
+This way you can understand better your dataset and see the flaws in it that you need to correct to enhance your trained model predictions e.g correcting data unbalance by adding more data samples to the class where there are fewer samples.
+
+## New training version 
+
+You can generate a new version of the dataset and try out a new training with a different model. That way you can compare the metrics of the different trained models and deploy the one that gives the best outcome. 
+
+After creating a new dataset version, I will choose a  model by clicking on the export button, as shown below: 
+
+![new-dataset-version](/docs/new-version.png)
+
+I will re-tarin a second version of the model using the previous experiment, as shown below: 
+
+![train](/docs/train-with-previous.png)
+
+If you want to do the training locally using the dataset hosted at Roboflow and when you select a model, you can copy the following code snippet that will allow you to download the data locally in a format custom to the chosen model. 
+
+````python 
+!pip install roboflow
+
+from roboflow import Roboflow
+
+rf = Roboflow(api_key="your-api-key")
+project = rf.workspace("workspace-name").project("proejct-name")
+dataset = project.version(2).download("yolov5")
+````
+
+
+
+
