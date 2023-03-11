@@ -90,4 +90,40 @@ You can also visualize the prediction of your model and the ground truth to have
 ![visualize-predictions](/docs/predictions.gif)
 
 
+## Dataset health check 
+
+The best way to assess model performance besides checking the training metrics is to check the dataset class distribution, balance, annotation quality, etc. 
+
+Thanks to the health check feature on Roboflow, this process is made straightforward, as shown below: 
+
+![health-check](/docs/health-check.gif)
+
+This way you can understand better your dataset and see the flaws in it that you need to correct to enhance your trained model predictions e.g correcting data unbalance by adding more data samples to the class where there are fewer samples.
+
+## New training version 
+
+You can generate a new version of the dataset and try out a new training with a different model. That way you can compare the metrics of the different trained models and deploy the one that gives the best outcome. 
+
+After creating a new dataset version, I will choose a  model by clicking on the export button, as shown below: 
+
+![new-dataset-version](/docs/new-version.png)
+
+I will re-tarin a second version of the model using the previous experiment, as shown below: 
+
+![train](/docs/train-with-previous.png)
+
+If you want to do the training locally using the dataset hosted at Roboflow and when you select a model, you can copy the following code snippet that will allow you to download the data locally in a format custom to the chosen model. 
+
+````python 
+!pip install roboflow
+
+from roboflow import Roboflow
+
+rf = Roboflow(api_key="your-api-key")
+project = rf.workspace("workspace-name").project("proejct-name")
+dataset = project.version(2).download("yolov5")
+````
+
+
+
 

@@ -130,6 +130,7 @@ dmypy.json
 
 #data
 data/ 
+Vegan-food-finder-2/
 
 # unwanted files
 .DS_Store
