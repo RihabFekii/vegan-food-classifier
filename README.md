@@ -124,6 +124,8 @@ project = rf.workspace("workspace-name").project("proejct-name")
 dataset = project.version(2).download("yolov5")
 ````
 
+# ML model deployment 
 
-
+There are multiple options for model deployment and on Roboflow you have access to the following option: 
+- 
 
