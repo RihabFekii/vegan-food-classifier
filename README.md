@@ -124,6 +124,46 @@ project = rf.workspace("workspace-name").project("proejct-name")
 dataset = project.version(2).download("yolov5")
 ````
 
+# Computer Vision model deployment 
+
+There are multiple options for model deployment and choosing which option always depends on the use case and on how the end-user will consume the model.
+
+## Test model 
+For instance, to **test** my model I navigate to the **Deploy** tab in my project interface on Roboflow and drag and drop images or video files or use my webcam to do so, as shown below: 
+
+![test-model](/docs/test-model.png)
+
+## API for inference 
+
+In the scope of this project, I want to create a web app that enables the end-user to upload a picture of a dish to know if the food is vegan or not. 
+
+For that, creating an **API endpoint** to **trigger the inference** is suitable. 
+
+Instead of creating your API endpoint from scratch, Roboflow hosts an API for you to trigger the inference as shown in the [inference.py](/inference.py) file. 
+
+````python 
+rf = Roboflow(api_key="your-api-token")
+
+# get project 
+project = rf.workspace("your-workspace-name").project("your-project-name")
+
+# retreive trained model with its version
+model = project.version(1).model
+
+# infer on a local image
+print(model.predict("your-image.jpeg", confidence=40, overlap=30).json())
+
+# visualize your prediction
+model.predict("your-image.jpeg", confidence=40, overlap=30).save("prediction.jpg")
+````
+
+To test the inference script, you can use the images in this folder "vegan-test.jpeg" and "omnivore-text.jpeg" and visualize the predictions of the model respectively in [prediction-vegan.jpg](/prediction-vegan.jpg) and [prediction-omnivore.jpg](/prediction-omnivore.jpg). 
+
+
+
+
+
+
 
 
 

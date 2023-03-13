@@ -1,4 +1,3 @@
-
 import os
 
 from roboflow import Roboflow
@@ -16,5 +15,11 @@ rf = Roboflow(api_key=API_TOKEN)
 # get project 
 project = rf.workspace("rihab-bzsjy").project("vegan-food-finder")
 
-# download dataset locally in a custom format for yolov5
-dataset = project.version(2).download("yolov5")
+# retreive trained model with its version
+model = project.version(2).model
+
+# infer on a local image
+print(model.predict("your-image.jpeg", confidence=40, overlap=30).json())
+
+# visualize your prediction
+model.predict("your-image.jpeg", confidence=40, overlap=30).save("prediction.jpg")
