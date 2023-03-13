@@ -11,7 +11,7 @@ A web-based app to classify vegan food from non-vegan food using Roboflow.
 5. Creating a web app with Streamlit 
 
 
-# Data preparation 
+# Step 1: Data preparation 
 
 You can have a nice AI project idea in mind 🚀, but oftentimes, you don't find the fitting dataset. 
 
@@ -67,7 +67,7 @@ Finally, this is what the configuration of the newly generated version of my dat
 
 ![dataset-generate](/docs/dataset-config.png)
 
-# Training 
+# Step 2: Training 
 
 Now that the data annotation and dataset creation and processing are completed. The next step is to train an object detection model on your dataset. Roboflow makes this process simple and possible in one click.
 
@@ -124,7 +124,7 @@ project = rf.workspace("workspace-name").project("proejct-name")
 dataset = project.version(2).download("yolov5")
 ````
 
-# Computer Vision model deployment 
+# Step 3: Computer Vision model deployment 
 
 There are multiple options for model deployment and choosing which option always depends on the use case and on how the end-user will consume the model.
 
