@@ -11,7 +11,7 @@ A web-based app to classify vegan food from non-vegan food using Roboflow.
 5. Creating a web app with Streamlit 
 
 
-# Data preparation 
+# Step 1: Data preparation 
 
 You can have a nice AI project idea in mind 🚀, but oftentimes, you don't find the fitting dataset. 
 
@@ -67,7 +67,7 @@ Finally, this is what the configuration of the newly generated version of my dat
 
 ![dataset-generate](/docs/dataset-config.png)
 
-# Training 
+# Step 2: Training 
 
 Now that the data annotation and dataset creation and processing are completed. The next step is to train an object detection model on your dataset. Roboflow makes this process simple and possible in one click.
 
@@ -124,7 +124,7 @@ project = rf.workspace("workspace-name").project("proejct-name")
 dataset = project.version(2).download("yolov5")
 ````
 
-# Computer Vision model deployment 
+# Step 3: Computer Vision model deployment 
 
 There are multiple options for model deployment and choosing which option always depends on the use case and on how the end-user will consume the model.
 
@@ -160,10 +160,39 @@ model.predict("your-image.jpeg", confidence=40, overlap=30).save("prediction.jpg
 To test the inference script, you can use the images in this folder "vegan-test.jpeg" and "omnivore-text.jpeg" and visualize the predictions of the model respectively in [prediction-vegan.jpg](/prediction-vegan.jpg) and [prediction-omnivore.jpg](/prediction-omnivore.jpg). 
 
 
+# Step 4: Creating a web app with Streamlit 
 
+This is the last step of this project, the vegan food detection model will be served in a web app created with [Streamlit](https://streamlit.io/) with which you can create a web app in Python. 
 
+This web interface will enable the following: 
+- The user drags and drops an image of a dish 
+- In the background the inference is triggered using the hosted API on Roboflow. 
+- The prediction results are shown in the web app
 
+To run the streamlit app, run the following commands: 
 
+- First, clone this repository:
+````shell
+git clone https://github.com/RihabFekii/vegan-food-classifier.git 
+````
+- Navigate to the root directory
+````shell
+cd vegan-food-classifier
+````
+- Set up a python environment and activate it 
 
+````shell
+python3 -m venv venv
+source venv/bin/activate
+````
+- Run the Streamlit app:
 
+````sell
+cd streamlit 
+run streamlit app.py
+````
+
+After completing these steps, a tab will automatically open in your browser, as shown below:
+
+![streamlit-app](/docs/streamlit.png)
 
