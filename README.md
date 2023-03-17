@@ -157,8 +157,13 @@ print(model.predict("your-image.jpeg", confidence=40, overlap=30).json())
 model.predict("your-image.jpeg", confidence=40, overlap=30).save("prediction.jpg")
 ````
 
-To test the inference script, you can use the images in this folder "vegan-test.jpeg" and "omnivore-text.jpeg" and visualize the predictions of the model respectively in [prediction-vegan.jpg](/prediction-vegan.jpg) and [prediction-omnivore.jpg](/prediction-omnivore.jpg). 
+To test the inference script, you can use the images in the folder [examples](/examples) and visualize the predictions of the model respectively in [prediction-vegan.jpg](/examples/prediction-vegan.jpg) and [prediction-omnivore.jpg](examples/prediction-omnivore.jpg).
 
+Make sure to add the **path to the image** you want to do the inference with as an **argument variable**, by running the following command: 
+
+````python
+python3 inference.py /path/to/image
+````
 
 # Step 4: Creating a web app with Streamlit 
 
@@ -195,4 +200,3 @@ run streamlit app.py
 After completing these steps, a tab will automatically open in your browser, as shown below:
 
 ![streamlit-app](/docs/streamlit.png)
-
